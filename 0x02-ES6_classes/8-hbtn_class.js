@@ -1,29 +1,32 @@
-class HolbertonClass {
-    private _size: number;
-    private _location: string;
+export default class HolbertonClass {
+  constructor(size, location) {
+    this.size = size;
+    this.location = location;
+  }
 
-    constructor(size: number, location: string) {
-        this._size = size;
-        this._location = location;
-    }
+  get size() {
+    return this._size;
+  }
 
-    get size(): number {
-        return this._size;
-    }
+  set size(value) {
+    this._size = value;
+  }
 
-    get location(): string {
-        return this._location;
-    }
+  get location() {
+    return this._location;
+  }
 
-    valueOf(): number {
-        return this._size;
-    }
+  set location(value) {
+    this._location = value;
+  }
 
-    toString(): string {
-        return this._location;
+  [Symbol.toPrimitive](hint) {
+    if (hint === 'number') {
+      return this.size;
     }
+    if (hint === 'string') {
+      return this.location;
+    }
+    return this;
+  }
 }
-
-const holbertonClass = new HolbertonClass(100, 'Los Angeles');
-console.log(holbertonClass.toString()); // Los Angeles
-console.log(Number(holbertonClass)); // 100

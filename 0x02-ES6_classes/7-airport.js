@@ -1,24 +1,26 @@
-class Airport {
-    private _name: string;
-    private _code: string;
+export default class Airport {
+  constructor(name, code) {
+    this.name = name;
+    this.code = code;
+  }
 
-    constructor(name: string, code: string) {
-        this._name = name;
-        this._code = code;
-    }
+  get name() {
+    return this._name;
+  }
 
-    get name(): string {
-        return this._name;
-    }
+  set name(value) {
+    this._name = value;
+  }
 
-    get code(): string {
-        return this._code;
-    }
+  get code() {
+    return this._code;
+  }
 
-    toString(): string {
-        return this.code;
-    }
+  set code(value) {
+    this._code = value;
+  }
+
+  get [Symbol.toStringTag]() {
+    return this._code;
+  }
 }
-
-const airport = new Airport('Los Angeles International Airport', 'LAX');
-console.log(airport.toString()); // LAX

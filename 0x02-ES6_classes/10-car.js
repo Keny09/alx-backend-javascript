@@ -1,7 +1,41 @@
-import { StudentHolberton } from "./9-hoisting.js";
+export default class Car {
+  constructor(brand, motor, color) {
+    this.brand = brand;
+    this.motor = motor;
+    this.color = color;
+  }
 
-const car = new Car('Toyota', 'V6', 'Red');
-console.log(car);
+  get brand() {
+    return this._brand;
+  }
 
-const clonedCar = car.cloneCar();
-console.log(clonedCar);
+  set brand(value) {
+    this._brand = value;
+  }
+
+  get motor() {
+    return this._motor;
+  }
+
+  set motor(value) {
+    this._motor = value;
+  }
+
+  get color() {
+    return this._color;
+  }
+
+  set color(value) {
+    this._color = value;
+  }
+
+  static get [Symbol.species]() {
+    return this;
+  }
+
+  cloneCar() {
+    const Species = this.constructor[Symbol.species];
+
+    return new Species();
+  }
+}

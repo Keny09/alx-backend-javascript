@@ -1,19 +1,20 @@
-class SkyHighBuilding extends Building {
-    private _floors: number;
+import Building from './5-building';
 
-    constructor(sqft: number, floors: number) {
-        super(sqft);
-        this._floors = floors;
-    }
+export default class SkyHighBuilding extends Building {
+  constructor(sqft, floors) {
+    super(sqft);
+    this.floors = floors;
+  }
 
-    get floors(): number {
-        return this._floors;
-    }
+  get floors() {
+    return this._floors;
+  }
 
-    evacuationWarningMessage(): string {
-        return `Evacuate slowly the ${this.floors} floors.`;
-    }
+  set floors(value) {
+    this._floors = value;
+  }
+
+  evacuationWarningMessage() {
+    return `Evacuate slowly the ${this.floors} floors`;
+  }
 }
-
-const skyHighBuilding = new SkyHighBuilding(10000, 80);
-console.log(skyHighBuilding.evacuationWarningMessage()); // Evacuate slowly the 80 floors.
